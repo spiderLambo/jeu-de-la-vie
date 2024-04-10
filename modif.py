@@ -1,4 +1,5 @@
 from random import *
+from captageDesAlentours import *
 
 HEIGH = 16
 WIDTH = 16
@@ -8,15 +9,14 @@ NB_TOURS = 12
 
 
 def change(grille):
-    for i in grille:
-        for j in i:
-            # Code pour observer les alentours
-            if 2 <= tour <= 3 and j == 1:
-                # Code
-                pass
-            elif tour == 3 and j == 0:
-                # Code
-                pass
+    index = alentours(grille)
+    for i in range(HEIGH * WIDTH + 1):
+        somme = index[i]
+        # Code pour observer les alentours
+        if 2 <= somme <= 3 and (i % WIDTH) == 1:
+            pass
+        elif somme == 3 and (i % WIDTH) == 0:
+            pass
 
 
 for i in range(NB_TOURS):
