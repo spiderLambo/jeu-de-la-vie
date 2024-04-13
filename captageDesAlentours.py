@@ -70,3 +70,44 @@ def alentours(grille):
                 +grille[i + 1][j + 1]
         indexSommes.append(somme)
     return indexSommes
+
+
+def voisins(x, y, grille):
+    nb = 0  # Initalisation du nombre de voisins
+    # Calcul des dimentions de la grille
+    largeur = len(grille[0])
+    hauteur = len(grille)
+
+    # diagonale haut-gauche
+    if grille[(y - 1) % largeur][(x + 1) % hauteur] == 1:
+        nb += 1
+
+    # haut
+    if grille[y][(x + 1) % hauteur] == 1:
+        nb += 1
+
+    # Diagonale haut-droite
+    if grille[(y + 1) % largeur][(x + 1) % hauteur] == 1:
+        nb += 1
+
+    # gauche
+    if grille[(y - 1) % largeur][x] == 1:
+        nb += 1
+
+    # droite
+    if grille[(y + 1) % largeur][x] == 1:
+        nb += 1
+
+    # Diagonale bas-gauche
+    if grille[(y - 1) % largeur][(x - 1) % hauteur] == 1:
+        nb += 1
+
+    # bas
+    if grille[y][(x - 1) % hauteur] == 1:
+        nb += 1
+
+    # diagonale bas-droite
+    if grille[(y + 1) % largeur][(x - 1) % hauteur] == 1:
+        nb += 1
+
+    return nb
