@@ -10,9 +10,12 @@ grille = [[randint(0, 1) for i in range(dimentions)] for i in range(dimentions)]
 pgm.init()  # Initialiser la fenetre
 
 screen = pgm.display.set_mode(
-    (dimentions * taille_pixels, dimentions * taille_pixels)
+    (dimentions * taille_pixels, dimentions * taille_pixels + 50)
 )  # Afficher la fenetre
 
+compteur = 0  # Initalisation du compteur
+font = pgm.font.Font(None, 24)
+text = font.render("Generation 0", 1, (0, 0, 0))
 
 run = True
 while run:
@@ -22,6 +25,8 @@ while run:
             run = False
         if event.type == pgm.KEYDOWN and event.key == pgm.K_RIGHT:
             grille = new_grid(grille)
+            compteur += 1  # Incrementation du compteur
+            text = font.render(f"Generation {compteur}", 1, (0, 0, 0))
 
     screen.fill((250, 250, 250))  # Changer la couleur de fond
 
@@ -51,5 +56,6 @@ while run:
                     ],
                     1,
                 )
+    screen.blit(text, (5, dimentions * taille_pixels + 5))
 
     pgm.display.flip()  # Actualisation de la fenetre
