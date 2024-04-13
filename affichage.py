@@ -27,7 +27,9 @@ while run:
         if event.type == pgm.KEYDOWN and event.key == pgm.K_RIGHT:
             grille = new_grid(grille)
             compteur += 1  # Incrementation du compteur
-            text = font.render(f"Generation {compteur}", 1, (0, 0, 0))
+            text = font.render(
+                f"Generation {compteur}", 1, (0, 0, 0)
+            )  # Actualisation du compteur
 
     screen.fill((250, 250, 250))  # Changer la couleur de fond
 
