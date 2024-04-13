@@ -2,15 +2,16 @@ from func import *
 import pygame as pgm
 from random import *
 
-HEIGH = 16
-WIDTH = 16
-grille = [[randint(0, 1) for i in range(WIDTH)] for i in range(HEIGH)]
+dimentions, taille_pixels = int(input("Quelle dimentions : ")), int(
+    input("Quelle taille de pixels : ")
+)
+grille = [[randint(0, 1) for i in range(dimentions)] for i in range(dimentions)]
 
 pgm.init()  # Initialiser la fenetre
 
-TAILLE_FENETRE = (WIDTH * 40, HEIGH * 40)
-
-screen = pgm.display.set_mode(TAILLE_FENETRE)  # Afficher la fenetre
+screen = pgm.display.set_mode(
+    (dimentions * taille_pixels, dimentions * taille_pixels)
+)  # Afficher la fenetre
 
 
 run = True
@@ -28,8 +29,27 @@ while run:
     for y in range(len(grille)):
         for x in range(len(grille[y])):
             if grille[y][x] == 1:
-                pgm.draw.rect(screen, (0, 0, 0), [x * 40, y * 40, 40, 40])
+                pgm.draw.rect(
+                    screen,
+                    (0, 0, 0),
+                    [
+                        x * taille_pixels,
+                        y * taille_pixels,
+                        taille_pixels,
+                        taille_pixels,
+                    ],
+                )
             else:
-                pgm.draw.rect(screen, (0, 0, 0), [x * 40, y * 40, 40, 40], 1)
+                pgm.draw.rect(
+                    screen,
+                    (0, 0, 0),
+                    [
+                        x * taille_pixels,
+                        y * taille_pixels,
+                        taille_pixels,
+                        taille_pixels,
+                    ],
+                    1,
+                )
 
     pgm.display.flip()  # Actualisation de la fenetre
