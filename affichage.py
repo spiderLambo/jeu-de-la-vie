@@ -19,10 +19,11 @@ text = font.render("Generation 0", 1, (0, 0, 0))
 
 run = True
 while run:
-    # Fermeture de la fenetre
     for event in pgm.event.get():
+        # Fermeture de la fenetre
         if event.type == pgm.QUIT:
             run = False
+        # Changer de grille
         if event.type == pgm.KEYDOWN and event.key == pgm.K_RIGHT:
             grille = new_grid(grille)
             compteur += 1  # Incrementation du compteur
