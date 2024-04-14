@@ -15,7 +15,7 @@ screen = pgm.display.set_mode(
 
 compteur = 0  # Initalisation du compteur
 font = pgm.font.Font(None, 24)
-text = font.render("Generation 0", 1, (0, 0, 0))
+texte_compteur = font.render("Generation 0", 1, (0, 0, 0))
 
 run = True
 while run:
@@ -27,7 +27,7 @@ while run:
         if event.type == pgm.KEYDOWN and event.key == pgm.K_RIGHT:
             grille = new_grid(grille)
             compteur += 1  # Incrementation du compteur
-            text = font.render(
+            texte_compteur = font.render(
                 f"Generation {compteur}", 1, (0, 0, 0)
             )  # Actualisation du compteur
 
@@ -47,6 +47,6 @@ while run:
                 ],
             )
 
-    screen.blit(text, (5, dimentions * taille_pixels + 5))
+    screen.blit(texte_compteur, (5, dimentions * taille_pixels + 5))
 
     pgm.display.flip()  # Actualisation de la fenetre
