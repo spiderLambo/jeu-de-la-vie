@@ -2,8 +2,7 @@ from random import *
 
 HEIGH = 5
 WIDTH = 5
-# lagrille = [[randint(0, 1) for i in range(WIDTH)] for i in range(HEIGH)]
-lagrille = [[1 for i in range(WIDTH)] for i in range(HEIGH)]
+lagrille = [[randint(0, 1) for i in range(WIDTH)] for i in range(HEIGH)]
 NB_TOURS = 5
 
 
