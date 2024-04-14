@@ -38,7 +38,7 @@ while run:
         for x in range(len(grille[y])):
             pgm.draw.rect(
                 screen,
-                (int(grille[y][x] * 100), 0, 0),
+                (0, int(grille[y][x] * 255), int(grille[y][x] * 255)),
                 [
                     x * taille_pixels,
                     y * taille_pixels,

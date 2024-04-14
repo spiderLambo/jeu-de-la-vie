@@ -1,9 +1,9 @@
 # Fonction qui revoie la nouvelle valeur en fonction du nombre de voisins
 def lenia_graph(number):
-    if 0.26 < number < 1.74:
-        return -0.9 * number * number + 1.8 * number - 0.1
+    if 0.444 < number < 3.156:
+        return -0.5 * number * number + 1.8 * number - 0.7
     else:
-        return 0.3
+        return 0
 
 
 def voisins(x, y, grille):
