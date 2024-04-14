@@ -30,28 +30,19 @@ def new_grid(grille):
     for y in range(len(grille)):
         for x in range(len(grille[0])):
             alentours = voisins(x, y, grille)
-            # Règle 1 - Mort d'isolement
-            if (
-                grille[y][x] == 1 and alentours < 2
-            ):  # Si la cellule est vivante et qu'elle a un nombre de voisins inférieur à deux
-                nouvelle_grille[y][x] = 0  # alors elle meurt
-
-            # Règle 2 - Toute cellule avec 2 ou 3 voisins survit.
-            if grille[y][x] == 1 and (
+            # Règle 1 - Mort
+            if grille[y][x] == 1 and not (
                 alentours in [2, 3]
-            ):  # Si une cellule est vivante et qu'elle a deux ou trois voisins
-                nouvelle_grille[y][x] = 1  # alors elle reste en vie
-
-            # Règle 3 - Mort par surpopulation
-            if (
-                grille[y][x] == 1 and alentours > 3
-            ):  # si une cellule est vivante et qu'elle a plus de trois voisins
+            ):  # Si la cellule est vivante et qu'elle a un nombre de voisins inférieur à deux
+                # ou superieur à 3
                 nouvelle_grille[y][x] = 0  # alors elle meurt
 
-            # Règle 4 - Naissance
-            if (
+            # Règle 4 - Vie
+            if (grille[y][x] == 1 and alentours in [2, 3]) or (
                 grille[y][x] == 0 and alentours == 3
-            ):  # si une cellule est morte et qu'elle a trois voisins
-                nouvelle_grille[y][x] = 1  # alors elle nait (son état est à vivant)
+            ):
+                # Si une cellule est vivante et qu'elle a deux ou trois voisins ou
+                # Si une cellule est morte et qu'elle a trois voisins
+                nouvelle_grille[y][x] = 1  # Alors son état est à vivant
 
     return nouvelle_grille

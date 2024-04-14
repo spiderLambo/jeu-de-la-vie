@@ -38,7 +38,6 @@ def new_grid(grille):
     for y in range(len(grille)):
         for x in range(len(grille[0])):
             # Nouvelle valeur
-            alentours = voisins(x, y, grille)
-            nouvelle_grille[y][x] = alentours
+            nouvelle_grille[y][x] = voisins(x, y, grille)
 
     return nouvelle_grille
