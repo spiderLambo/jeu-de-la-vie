@@ -1,16 +1,18 @@
+# Importation des librairies
 from func import *
 import pygame as pgm
-from random import *
+from random import randint
 
 
 pgm.init()  # Initialiser la fenetre
 clock = pgm.time.Clock()
 
-
-screen = pgm.display.set_mode((300, 300))  # Afficher la fenetre
+# Afficher la fenetre
+screen = pgm.display.set_mode((300, 300))
 pgm.display.set_caption("Jeu de la vie")
 
 compteur = 0  # Initalisation du compteur
+# Création des textes
 arialFont = pgm.font.SysFont("arial", 20)
 texte_compteur = arialFont.render("Generation 0", 1, (0, 0, 0))
 titre = arialFont.render("Le jeu de la vie de Conway", 1, (0, 0, 0))
@@ -18,15 +20,19 @@ play = arialFont.render("Jouer", 1, (0, 0, 0))
 dim_txt = arialFont.render("Nombre de cellules par coté", 1, (0, 0, 0))
 taille_txt = arialFont.render("Taille des pixels", 1, (0, 0, 0))
 start = arialFont.render("Commencer", 1, (0, 0, 0))
+gen = arialFont.render(f"Generation 0", 1, (0, 0, 0))
+# Booleen pour l'affichage des fenetres
 parametre = False
 jouer = False
+# Zones de click
 play_rect = pgm.Rect(120, 150, 43, 20)
 start_rect = pgm.Rect(100, 250, 92, 20)
 dim_rect = pgm.Rect(10, 100, 100, 30)
 taille_rect = pgm.Rect(10, 200, 100, 30)
+# Zones de texte des zones clickables
 dimentions = ""
 taille_pixels = ""
-gen = arialFont.render(f"Generation 0", 1, (0, 0, 0))
+# Booleen pour la selection des zones de texte
 dim_active = False
 taille_active = False
 
@@ -118,38 +124,6 @@ while run:
         # Elargir le rectangle au besoin
         dim_rect.w = max(100, dim_txt_surface.get_width() + 10)
         taille_rect.w = max(100, taille_txt_surface.get_width() + 10)
-
-        # Commencer la simulation
-        if jouer:
-            screen = pgm.display.set_mode(
-                (dimentions * taille_pixels, dimentions * taille_pixels + 50)
-            )  # Afficher la fenetre
-            for y in range(len(grille)):
-                for x in range(len(grille[y])):
-                    if grille[y][x] == 1:
-                        pgm.draw.rect(
-                            screen,
-                            (0, 0, 0),
-                            [
-                                x * taille_pixels,
-                                y * taille_pixels,
-                                taille_pixels,
-                                taille_pixels,
-                            ],
-                        )
-                    else:
-                        pgm.draw.rect(
-                            screen,
-                            (0, 0, 0),
-                            [
-                                x * taille_pixels,
-                                y * taille_pixels,
-                                taille_pixels,
-                                taille_pixels,
-                            ],
-                            1,
-                        )
-            screen.blit(text, (5, dimentions * taille_pixels + 5))
     # Commencer la simulation
     elif jouer:
         screen = pgm.display.set_mode(
@@ -182,10 +156,13 @@ while run:
                         ],
                         1,
                     )
-        screen.blit(gen, (5, dimentions * taille_pixels + 5))
+        screen.blit(
+            gen, (5, dimentions * taille_pixels + 5)
+        )  # Affichage de la zone du numéro de la generation
+    # Ecran titre
     else:
         screen.blit(titre, (50, 50))
         screen.blit(play, (120, 150))
 
     pgm.display.flip()  # Actualisation de la fenetre
-    clock.tick(60)
+    clock.tick(60)  # 60 images par secondes
