@@ -9,16 +9,16 @@ clock = pgm.time.Clock()
 
 # Afficher la fenetre
 screen = pgm.display.set_mode((300, 300))
-pgm.display.set_caption("Jeu de la vie")
+pgm.display.set_caption("Game of Life")
 
 compteur = 0  # Initalisation du compteur
 # Création des textes
 arialFont = pgm.font.SysFont("arial", 20)
-titre = arialFont.render("Le jeu de la vie de Conway", 1, (0, 0, 0))
-play = arialFont.render("Jouer", 1, (0, 0, 0))
-dim_txt = arialFont.render("Nombre de cellules par coté", 1, (0, 0, 0))
-taille_txt = arialFont.render("Taille des pixels", 1, (0, 0, 0))
-start = arialFont.render("Commencer", 1, (0, 0, 0))
+titre = arialFont.render("Conway's Game of Life", 1, (0, 0, 0))
+play = arialFont.render("Play", 1, (0, 0, 0))
+dim_txt = arialFont.render("Number of cells per side", 1, (0, 0, 0))
+taille_txt = arialFont.render("Pixel size", 1, (0, 0, 0))
+start = arialFont.render("Start", 1, (0, 0, 0))
 gen = arialFont.render("Generation 0", 1, (0, 0, 0))
 # Booleen pour l'affichage des fenetres
 parametre = False
