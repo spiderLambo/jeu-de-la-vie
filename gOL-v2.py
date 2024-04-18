@@ -2,8 +2,8 @@ from func import *
 import pygame as pgm
 from random import *
 
-dimentions, taille_pixels = int(input("Quelle dimentions : ")), int(
-    input("Quelle taille de pixels : ")
+dimentions, taille_pixels = int(input("Quelles dimensions : ")), int(
+    input("Quelles tailles de pixels : ")
 )
 grille = [[randint(0, 1) for i in range(dimentions)] for i in range(dimentions)]
 
